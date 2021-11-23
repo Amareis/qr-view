@@ -2,6 +2,7 @@
   "name": "QR",
   "short_name": "QR",
   "start_url": "/qr-view",
+  "scope": "/qr-view",
   "icons": [
     {
       "src": "icon.png",
