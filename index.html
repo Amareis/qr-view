@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <meta name='viewport' content='width=device-width,initial-scale=1,max-scale=1,min-scale=1,user-scalable=no' />
+  <title>QR</title>
+  <link rel="icon" href="android-chrome-512x512.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <style>
+    body,
+    html {
+      margin: 0;
+      height: 100%;
+    }
+
+    #img {
+      width: 100%;
+      height: auto;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <img id="img" src="android-chrome-512x512.png" />
+  <script>
+    const readURL = file => new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = e => res(e.target.result);
+      reader.onerror = e => rej(e);
+      reader.readAsDataURL(file);
+    })
+
+    const i = document.getElementById('img')
+    i.addEventListener('click', async () => {
+      const [fh] = await showOpenFilePicker({
+        types: [
+          {
+            description: 'Images',
+            accept: {
+              'image/*': ['.png', '.gif', '.jpeg', '.jpg']
+            }
+          },
+        ],
+        excludeAcceptAllOption: true,
+        multiple: false
+      }).catch(() => [])
+      if (!fh)
+        return
+      const file = await fh.getFile()
+      const url = await readURL(file);
+      img.src = url;
+    })
+  </script>
+</body>
+
+</html>
