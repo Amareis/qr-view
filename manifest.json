@@ -1,10 +1,10 @@
 {
   "name": "QR",
   "short_name": "QR",
-  "start_url": "/",
+  "start_url": "/qr-view",
   "icons": [
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
